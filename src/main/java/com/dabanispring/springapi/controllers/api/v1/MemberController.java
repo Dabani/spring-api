@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,4 +53,13 @@ public class MemberController {
     @RequestBody Member member) {
       return new ResponseEntity<Member> (memberService.updateMember(member, memberId), HttpStatus.OK);
     }
+
+  // Build delete member REST API
+  // http://localhost:8080/api/v1/members/1
+  @DeleteMapping("{id}")
+  public ResponseEntity<String> deleteMember(@PathVariable("id") long memberId) {
+    memberService.deleteMember(memberId);
+    return new ResponseEntity<String>("Member deleted successfully!", HttpStatus.OK);
+  }
+
 }

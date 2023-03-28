@@ -58,5 +58,14 @@ public class MemberServiceImplementation implements MemberService {
     memberRepository.save(existingMember);
     return existingMember;
   }
+
+  @Override
+  public void deleteMember(long id) {
+    // Check if member exists in the database or not
+    memberRepository.findById(id)
+    .orElseThrow(() -> new ResourceNotFoundException("Member", "id", id));
+    
+    memberRepository.deleteById(id);
+  }
   
 }
