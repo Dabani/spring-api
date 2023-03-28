@@ -7,4 +7,5 @@ import com.dabanispring.springapi.models.Member;
 public interface MemberService {
   Member saveMember(Member member);
   List<Member> getAllMembers();
+  Member getMemberById(long id);
 }
