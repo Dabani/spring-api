@@ -1,4 +1,4 @@
-package com.dabanispring.springapi.controllers;
+package com.dabanispring.springapi.controllers.api.v1;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import com.dabanispring.springapi.models.Member;
 import com.dabanispring.springapi.services.MemberService;
 
 @RestController
-@RequestMapping("/api/members")
+@RequestMapping("/api/v1/members")
 public class MemberController {
   private MemberService memberService;
 
