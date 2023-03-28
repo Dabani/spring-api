@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,4 +43,13 @@ public class MemberController {
   public ResponseEntity<Member> getMemberById(@PathVariable("id") long memberId) {
     return new ResponseEntity<Member> (memberService.getMemberById(memberId), HttpStatus.OK);
   }
+
+  // Build update member by id REST API
+  // http://localhost:8080/api/v1/members/1
+  @PutMapping("{id}")
+  public ResponseEntity<Member> updateMember(
+    @PathVariable("id") long memberId,
+    @RequestBody Member member) {
+      return new ResponseEntity<Member> (memberService.updateMember(member, memberId), HttpStatus.OK);
+    }
 }

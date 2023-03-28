@@ -43,5 +43,20 @@ public class MemberServiceImplementation implements MemberService {
     return memberRepository.findById(id)
       .orElseThrow(() -> new ResourceNotFoundException("Member", "Id", id));
   }
+
+  @Override
+  public Member updateMember(Member member, long id) {
+    // Check if the given member exists in the database
+    final Member existingMember = memberRepository.findById(id)
+    .orElseThrow(() -> new ResourceNotFoundException("Member", "id", id));
+
+    existingMember.setFirstName(member.getFirstName());
+    existingMember.setLastName(member.getLastName());
+    existingMember.setEmail(member.getEmail());
+    existingMember.setStatus(member.getStatus());
+    // save existing member to DB
+    memberRepository.save(existingMember);
+    return existingMember;
+  }
   
 }
