@@ -1,5 +1,7 @@
 package com.dabanispring.springapi.services.implementations;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.dabanispring.springapi.models.Member;
@@ -19,6 +21,11 @@ public class MemberServiceImplementation implements MemberService {
   @Override
   public Member saveMember(Member member) {
     return memberRepository.save(member);
+  }
+
+  @Override
+  public List<Member> getAllMembers() {
+    return memberRepository.findAll();
   }
   
 }
